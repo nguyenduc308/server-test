@@ -5,6 +5,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     logger: ['warn', 'error'],
   });
+  console.log('hallo');
 
   app.setGlobalPrefix('/api');
   const PORT = process.env.PORT || 5000;
