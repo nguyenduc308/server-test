@@ -12,10 +12,7 @@
     "lint:server": "npm run lint --prefix server"
   },
   "lint-staged": {
-    "server/src/**/*.ts": [
-      "npm run --silent prettier:server",
-      "npm run --silent lint:server"
-    ]
+    "server/src/**/*.ts": "npm run --silent prettier:server" 
   },
   "husky": {
     "hooks": {
