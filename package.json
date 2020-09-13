@@ -5,7 +5,8 @@
   "license": "MIT",
   "dependencies": {
     "husky": "^4.3.0",
-    "lint-staged": "^10.3.0"
+    "lint-staged": "^10.3.0",
+    "mysql": "^2.18.1"
   },
   "scripts": {
     "prettier:server": "npm run format --prefix server",
