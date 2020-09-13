@@ -13,7 +13,8 @@
   },
   "lint-staged": {
     "server/src/**/*.ts": [
-      "npm run --silent prettier:server"
+      "npm run --silent prettier:server",
+      "npm run --silent lint:server"
     ]
   },
   "husky": {
