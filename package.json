@@ -8,11 +8,14 @@
     "lint-staged": "^10.3.0"
   },
   "scripts": {
-    "prettier:server": "npm run format --prefix server",
+    "prettier:server": "npm run format --prefix server/",
     "lint:server": "npm run lint --prefix server"
   },
   "lint-staged": {
-    "server/src/**/*.ts": ["npm run --silent prettier:server"] 
+    "server/src/**/*.ts": [
+      "npm run --silent prettier:server",
+      "npm run --silent lint:server"
+    ]
   },
   "husky": {
     "hooks": {
