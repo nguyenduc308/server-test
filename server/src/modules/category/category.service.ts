@@ -38,6 +38,6 @@ export class CategoryService {
 
   async deleteCategoryBySlug(slug): Promise<DeleteResult> {
     const foundCategory = await this.getCategoryBySlug(slug);
-    return this._catRepo.delete(foundCategory);
+    return await this._catRepo.delete(foundCategory);
   }
 }
