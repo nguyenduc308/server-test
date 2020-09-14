@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+import AboutUs from './features/about-us';
 
 const App = () => {
-  return <h1>Jel</h1>;
+  return (
+    <Fragment>
+      <BrowserRouter>
+        <Route path="/about-us" component={AboutUs}></Route>
+      </BrowserRouter>
+    </Fragment>
+  );
 };
 
 export default App;
