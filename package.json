@@ -9,12 +9,16 @@
   },
   "scripts": {
     "prettier:server": "npm run format --prefix server",
-    "lint:server": "npm run lint --prefix server"
+    "lint:server": "npm run lint --prefix server",
+    "prettier:client-admin": "npm run format --prefix client-admin"
   },
   "lint-staged": {
     "server/src/**/*.ts": [
       "npm run prettier:server",
       "npm run lint:server"
+    ],
+    "client-admin/src/**/*.[tsx,ts]": [
+      "npm run prettier:client-admin"
     ]
   },
   "husky": {
