@@ -14,11 +14,11 @@
   },
   "lint-staged": {
     "server/src/**/*.ts": [
-      "npm run prettier:server",
-      "npm run lint:server"
+      "npm run --slient prettier:server",
+      "npm run --slient lint:server"
     ],
     "client-admin/src/**/*.{tsx,ts}": [
-      "npm run prettier:client-admin"
+      "npm run --slient prettier:client-admin"
     ]
   },
   "husky": {
