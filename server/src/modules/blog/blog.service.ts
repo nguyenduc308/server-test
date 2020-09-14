@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CreateBlogDTO } from './blog.dto';
+import { DeleteResult } from 'typeorm';
+import { CreateBlogDTO, UpdateBlogDTO } from './blog.dto';
 import { BlogEntity } from './blog.entity';
 import { BlogRepository } from './blog.repository';
 
@@ -24,7 +25,19 @@ export class BlogService {
 
   async createBlog(data: CreateBlogDTO): Promise<BlogEntity> {
     const newBlog = await this._blogRepo.create(data);
-    await newBlog.save();
-    return newBlog;
+    return await newBlog.save();
+  }
+
+  async updateBlog(slug: string, data: UpdateBlogDTO): Promise<BlogEntity> {
+    const foundBlog = await this.getBlogBySlug(slug);
+    Object.keys(data).forEach(key => {
+      foundBlog[key] = data[key];
+    });
+    return await foundBlog.save();
+  }
+
+  async deleteBlogBySlug(slug): Promise<DeleteResult> {
+    const findBlog = await this.getBlogBySlug(slug);
+    return await this._blogRepo.delete(findBlog);
   }
 }

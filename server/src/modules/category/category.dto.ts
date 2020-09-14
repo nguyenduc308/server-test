@@ -1,19 +1,19 @@
 import { IsEmpty, IsNotEmpty } from 'class-validator';
 
-export class CreateBlogDTO {
+export class CreateCategoryDTO {
   @IsNotEmpty()
   title: string;
 
-  @IsNotEmpty()
-  content: string;
-
   @IsEmpty()
   slug;
+
+  description?: string;
 }
-export class UpdateBlogDTO {
-  title?: string;
-  content?: string;
 
+export class UpdateCategoryDTO {
   @IsEmpty()
   slug;
+
+  title?: string;
+  description?: string;
 }

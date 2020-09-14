@@ -11,8 +11,8 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity({ name: 'blog' })
-export class BlogEntity extends BaseEntity {
+@Entity({ name: 'category' })
+export class CategoryEntity extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -23,7 +23,7 @@ export class BlogEntity extends BaseEntity {
   slug: string;
 
   @Column()
-  content: string;
+  description: string;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
@@ -37,7 +37,6 @@ export class BlogEntity extends BaseEntity {
     this.slug = cleanAccents(this.title)
       .toLowerCase()
       .split(' ')
-      .concat([ID_SLUG_SEPARATOR + Date.now()])
       .join('-');
   }
 }
