@@ -22,7 +22,7 @@ import { LocalStrategy } from './strategies/local.strategy';
     }),
     UserModule,
   ],
-  providers: [AuthService, LocalStrategy],
+  providers: [UserService, AuthService, LocalStrategy],
   controllers: [AuthController],
 })
 export class AuthModule {}

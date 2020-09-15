@@ -6,7 +6,10 @@ export class CreateUserDTO {
 
   @IsNotEmpty()
   @MinLength(6)
-  passsword: string;
+  password: string;
+
+  @IsEmpty()
+  roles;
 }
 
 export class UpdateUserDTO {
@@ -15,4 +18,7 @@ export class UpdateUserDTO {
 
   @MinLength(6)
   password?: string;
+
+  @IsEmpty()
+  roles;
 }

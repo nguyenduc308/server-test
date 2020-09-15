@@ -7,6 +7,7 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
+import { Roles } from 'src/decorators/role.decorator';
 import { CreateBlogDTO, UpdateBlogDTO } from './blog.dto';
 import { BlogEntity } from './blog.entity';
 import { BlogService } from './blog.service';
