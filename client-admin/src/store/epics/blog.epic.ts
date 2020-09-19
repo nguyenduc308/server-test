@@ -1,16 +1,36 @@
 import { Action } from 'redux';
 import { ActionsObservable, Epic } from 'redux-observable';
-import { filter, map, switchMap } from 'rxjs/operators';
-import { FETCH_BLOGS } from 'src/shared/constants/blog-reducer.const';
-import { httpClient } from 'src/shared/service';
+import { filter, map, switchMap, catchError, take } from 'rxjs/operators';
 import { isOfType } from 'typesafe-actions';
-import { actionFetchBlogsSuccess } from '../actions/blog.action';
+import { of } from 'rxjs';
+
+import { IBlogResponse } from '@type/blog.type';
+import {
+  FETCH_BLOGS,
+  FETCH_BLOGS_SUCCESS,
+} from 'shared/constants/blog-reducer.const';
+import { httpClient } from 'shared/service';
+import { FETCH_ERROR } from 'shared/constants/error-reducer.const';
 
 const fetchBlogEpic: Epic = (action$: ActionsObservable<Action>) =>
   action$.pipe(
     filter(isOfType(FETCH_BLOGS)),
-    switchMap(() => httpClient.get('/blogs')),
-    map(actionFetchBlogsSuccess),
+    switchMap(() =>
+      httpClient.get<IBlogResponse[]>('/blogs').pipe(
+        catchError((error) =>
+          of({
+            type: FETCH_ERROR,
+            payload: error,
+            error: true,
+          }),
+        ),
+        map((blogs) => ({
+          type: FETCH_BLOGS_SUCCESS,
+          payload: blogs,
+        })),
+      ),
+    ),
+    take(1),
   );
 
 export default [fetchBlogEpic];

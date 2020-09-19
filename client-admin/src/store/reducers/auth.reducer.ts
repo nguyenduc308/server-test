@@ -1,5 +1,5 @@
 import { Action } from 'redux';
-import { LOGIN } from 'src/shared/constants/auth-reducer.const';
+import { LOGIN } from 'shared/constants/auth-reducer.const';
 
 export type State = {
   user: any;

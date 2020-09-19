@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import AboutUs from 'src/features/about-us';
-import { httpClient } from 'src/shared/service';
+import AboutUs from 'features/about-us';
+import { httpClient } from 'shared/service';
 import { Login } from './features/login';
 import { useDispatch } from 'react-redux';
 import { actionFetchBlogs } from './store/actions/blog.action';

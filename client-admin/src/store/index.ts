@@ -1,6 +1,6 @@
 import { applyMiddleware, compose, createStore } from 'redux';
 import { createEpicMiddleware } from 'redux-observable';
-import reducers from 'src/store/reducers';
+import reducers from './reducers';
 import epics from './epics';
 declare global {
   interface Window {

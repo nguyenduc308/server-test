@@ -1,10 +1,10 @@
 import { ActionsObservable, Epic, StateObservable } from 'redux-observable';
 import { Action } from 'redux';
-import { LOGIN } from 'src/shared/constants/auth-reducer.const';
+import { LOGIN } from 'shared/constants/auth-reducer.const';
 import { State } from '../reducers/auth.reducer';
 import { switchMap } from 'rxjs/operators';
-import { ILoginCredentials } from 'src/@type/auth.type';
-import { httpClient } from 'src/shared/service';
+import { ILoginCredentials } from '@type/auth.type';
+import { httpClient } from 'shared/service';
 
 const login = (credentials: ILoginCredentials) => ({
   type: LOGIN,

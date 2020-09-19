@@ -1,5 +1,5 @@
 // import { Action } from "redux"
-import { FETCH_BLOGS_SUCCESS } from 'src/shared/constants/blog-reducer.const';
+import { FETCH_BLOGS_SUCCESS } from 'shared/constants/blog-reducer.const';
 
 export type State = {
   user: any;
