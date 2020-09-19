@@ -4,7 +4,7 @@ import AboutUs from 'features/about-us';
 import { httpClient } from 'shared/service';
 import { Login } from './features/login';
 import { useDispatch } from 'react-redux';
-import { actionFetchBlogs } from './store/actions/blog.action';
+import { actionFetchBlogs } from 'store/blog/blog-action';
 const App = () => {
   httpClient.registerToken('abc123');
   const dispatch = useDispatch();

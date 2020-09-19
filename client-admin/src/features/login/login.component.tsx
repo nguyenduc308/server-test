@@ -1,13 +1,16 @@
 import React, { ChangeEvent, FormEvent, Fragment, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { authAction } from 'store/auth/auth-actions';
 const Login = () => {
   const [credentials, setCredentials] = useState({
-    email: '',
-    password: '',
+    email: 'duc@gmail.com',
+    password: '123213',
   });
+  const dispatch = useDispatch();
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log(credentials);
+    dispatch(authAction.login(credentials));
   };
   const onChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
     setCredentials({

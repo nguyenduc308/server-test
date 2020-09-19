@@ -21,8 +21,8 @@ export class UserEntity extends BaseEntity {
   @Column()
   password: string;
 
-  @Column()
-  roles = 'user';
+  // @Column()
+  // roles = 'user';
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
