@@ -9,6 +9,8 @@ import { checkTokenExprired } from 'shared/helpers/token.helper';
 import { RoutesComponent } from 'routes';
 import { LoadingComponent } from 'shared/components';
 
+import '../node_modules/antd/dist/antd.less';
+
 const App: React.FC = ({ isAuth }: any): JSX.Element => {
   let timerLogin: any;
   const dispatch = useDispatch();
