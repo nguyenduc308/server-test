@@ -1,13 +1,13 @@
-import React, { Fragment, useEffect } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { Fragment, Suspense, useEffect } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
-import AboutUs from 'features/about-us';
 import { cookieService, httpClient } from 'shared/service';
-import { Login } from './features/login';
 import { authAction } from 'store/auth/auth-actions';
 import { TOKEN } from 'shared/constants/keys.const';
 import { checkTokenExprired } from 'shared/helpers/token.helper';
+import { RoutesComponent } from 'routes';
+import { LoadingComponent } from 'shared/components';
 
 const App: React.FC = ({ isAuth }: any): JSX.Element => {
   let timerLogin: any;
@@ -45,10 +45,13 @@ const App: React.FC = ({ isAuth }: any): JSX.Element => {
 
   return (
     <Fragment>
-      <BrowserRouter>
-        <Route path="/about-us" component={AboutUs}></Route>
-        <Route path="/login" component={Login}></Route>
-      </BrowserRouter>
+      <div className="app-root">
+        <Suspense fallback={<LoadingComponent />}>
+          <BrowserRouter>
+            <RoutesComponent />
+          </BrowserRouter>
+        </Suspense>
+      </div>
     </Fragment>
   );
 };

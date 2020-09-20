@@ -1,11 +1,12 @@
 import React, { ChangeEvent, FormEvent, Fragment, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authAction } from 'store/auth/auth-actions';
-const Login = () => {
+const LoginComponent = () => {
   const [credentials, setCredentials] = useState({
     email: 'duc@gmail.com',
     password: '123213',
   });
+
   const dispatch = useDispatch();
 
   const onSubmit = (e: FormEvent) => {
@@ -45,4 +46,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginComponent;
