@@ -47,4 +47,9 @@ export const authReducer = createReducer(initialState)
       token: null,
       isAuth: false,
     }),
-  );
+  )
+  .handleAction([authAction.logout], (state: AuthStateType, action: any) => ({
+    ...state,
+    token: null,
+    isAuth: false,
+  }));

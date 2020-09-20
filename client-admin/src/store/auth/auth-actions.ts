@@ -5,14 +5,16 @@ import {
   LOGIN,
   LOGIN_FAILED,
   LOGIN_SUCCESS,
+  LOGOUT,
 } from 'shared/constants/auth-reducer.const';
-import { action, deprecated } from 'typesafe-actions';
+import { deprecated } from 'typesafe-actions';
 const { createAction } = deprecated;
 
 export const authAction = {
   login: createAction(LOGIN, (action) => (credentials: ILoginCredentials) =>
     action(credentials),
   ),
+  logout: createAction(LOGOUT, (action) => action),
   loginSuccess: createAction(LOGIN_SUCCESS, (action) => (response: any) =>
     action(response.token),
   ),

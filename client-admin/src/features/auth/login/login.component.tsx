@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Form, Input, Button } from 'antd';
 import { LoginOutlined } from '@ant-design/icons';
@@ -8,7 +8,7 @@ import { LoginGraphStyled, LoginPageStyled } from './login.styled';
 import { ILoginCredentials } from '@type/auth.type';
 import { AntdFormCustomStyled } from 'shared/styled/form.styled';
 import { AuthFormWrapperStyled, AuthTitleStyled } from '../auth.styled';
-import { Link, useRouteMatch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { REGISTER_PATH } from 'shared/constants/paths.const';
 
 const LoginComponent = () => {

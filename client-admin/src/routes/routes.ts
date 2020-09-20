@@ -1,9 +1,11 @@
 import React from 'react';
-import { ABOUT_US_PATH, AUTH_PATH } from 'shared/constants/paths.const';
+import {
+  ABOUT_US_PATH,
+  AUTH_PATH,
+  CATEGORIES_PATH,
+} from 'shared/constants/paths.const';
 import { NotFoundComponent } from 'features/not-found';
 import { LayoutNoColComponent } from 'shared/layouts';
-import { useNotAuth } from 'shared/guards/useNotAuth';
-import AuthComponent from 'features/auth';
 
 export interface IRoute {
   path: string;
@@ -30,6 +32,12 @@ export const routes: IRoute[] = [
     path: `/${AUTH_PATH}`,
     exact: false,
     loadComponent: React.lazy(() => import('features/auth')),
+    layout: LayoutNoColComponent,
+  },
+  {
+    path: `/${CATEGORIES_PATH}`,
+    exact: false,
+    loadComponent: React.lazy(() => import('features/category')),
     layout: LayoutNoColComponent,
   },
   {

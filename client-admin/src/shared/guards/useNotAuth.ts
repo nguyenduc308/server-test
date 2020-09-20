@@ -9,5 +9,5 @@ export const useNotAuth = (path: string) => {
     if (isAuth) {
       history.push(path);
     }
-  }, [isAuth, history]);
+  }, [isAuth, history, path]);
 };
