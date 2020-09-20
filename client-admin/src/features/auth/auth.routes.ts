@@ -1,3 +1,4 @@
+import { NotFoundComponent } from 'features/not-found';
 import { IRoute } from 'routes/routes';
 import { REGISTER_PATH, LOGIN_PATH } from 'shared/constants/paths.const';
 import LoginComponent from './login/login.component';
@@ -13,5 +14,10 @@ export const routes: IRoute[] = [
     path: `/${REGISTER_PATH}`,
     exact: false,
     component: RegisterComponent,
+  },
+  {
+    path: '',
+    exact: false,
+    component: NotFoundComponent,
   },
 ];

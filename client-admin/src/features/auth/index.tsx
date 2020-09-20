@@ -1,3 +1,1 @@
-import AuthComponent from './auth.component';
-
-export default AuthComponent;
+export { AuthComponent as default } from './auth.component';

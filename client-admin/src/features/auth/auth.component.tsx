@@ -2,11 +2,13 @@ import React, { Fragment } from 'react';
 import { Switch, Route, useRouteMatch, Redirect } from 'react-router-dom';
 
 import { IRoute } from 'routes/routes';
+import { HOME_PAGE_PATH } from 'shared/constants/paths.const';
+import { useNotAuth } from 'shared/guards/useNotAuth';
 import { routes } from './auth.routes';
 
-const AuthComponent = () => {
+export const AuthComponent = () => {
+  useNotAuth(HOME_PAGE_PATH);
   const match = useRouteMatch();
-
   return (
     <Fragment>
       <Switch>
@@ -25,5 +27,3 @@ const AuthComponent = () => {
     </Fragment>
   );
 };
-
-export default AuthComponent;

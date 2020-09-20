@@ -16,7 +16,7 @@ export const authAction = {
   loginSuccess: createAction(LOGIN_SUCCESS, (action) => (response: any) =>
     action(response.token),
   ),
-  // loginFailed: createAction(LOGIN_FAILED, )
+  loginFailed: createAction(LOGIN_FAILED, (action) => action),
   autoLogin: createAction(AUTO_LOGIN, (action) => (token: string) =>
     action(token),
   ),

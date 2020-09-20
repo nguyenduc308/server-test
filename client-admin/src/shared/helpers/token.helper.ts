@@ -5,7 +5,7 @@ export const checkTokenExprired = (token: string | undefined | null): any[] => {
     console.log('TOKEN IS EXPIRED OR NULL');
     return [false, null];
   }
-  console.log('TOKEN IS VALID');
+  console.log('Check expired token');
   const decoded = jwt_decode(token) as any;
   return [decoded.exp < new Date().getTime() / 1000, decoded];
 };

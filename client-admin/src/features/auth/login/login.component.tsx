@@ -12,14 +12,14 @@ import { Link, useRouteMatch } from 'react-router-dom';
 import { REGISTER_PATH } from 'shared/constants/paths.const';
 
 const LoginComponent = () => {
-  const [credentials, setCredentials] = useState<ILoginCredentials>({
+  const [credentials] = useState<ILoginCredentials>({
     email: 'duc@gmail.com',
     password: '123213',
   });
   const dispatch = useDispatch();
 
   const onSubmit = (value: ILoginCredentials) => {
-    dispatch(authAction.login(credentials));
+    dispatch(authAction.login(value));
   };
 
   return (

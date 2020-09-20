@@ -1,6 +1,7 @@
-import { ILoginCredentials } from '@type/auth.type';
-import { ActionsObservable, StateObservable } from 'redux-observable';
-import { filter, map, switchMap } from 'rxjs/operators';
+import { ActionsObservable } from 'redux-observable';
+import { filter, map, switchMap, catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
+
 import { TOKEN } from 'shared/constants/keys.const';
 import { cookieService, httpClient } from 'shared/service';
 import { isActionOf } from 'typesafe-actions';
@@ -14,6 +15,10 @@ const loginEpic = (action$: ActionsObservable<any>) =>
         map((response: any) => {
           cookieService.setItem(TOKEN, response.token, 10000);
           return authAction.loginSuccess(response);
+        }),
+        catchError((err) => {
+          cookieService.clear();
+          return of(authAction.loginFailed());
         }),
       );
     }),

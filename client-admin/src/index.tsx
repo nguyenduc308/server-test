@@ -7,7 +7,7 @@ import store from './store/storeConfig';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state: any) => {
-  const isAuth = !!state.auth.token;
+  const isAuth = state.auth.isAuth;
   return { isAuth };
 };
 

@@ -19,6 +19,7 @@ const App: React.FC = ({ isAuth }: any): JSX.Element => {
     const duration = expiredTime * 1000 - new Date().getTime();
     timerLogin = setTimeout(() => {
       dispatch(authAction.autoLogout());
+      cookieService.clear();
     }, duration);
   };
 
@@ -29,14 +30,14 @@ const App: React.FC = ({ isAuth }: any): JSX.Element => {
   useEffect(() => {
     const token = cookieService.getItem(TOKEN);
     const [isExpired, decoded] = checkTokenExprired(token);
+
     if (token && !isExpired) {
       httpClient.registerToken('abc123');
       dispatch(authAction.autoLogin(token));
       setupSectionLogin(decoded.exp);
+    } else {
+      cookieService.clear();
     }
-    return () => {
-      clearSectionLogin();
-    };
   }, [dispatch]);
 
   useEffect(() => {

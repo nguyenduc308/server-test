@@ -6,11 +6,13 @@ export type AuthActionType = ActionType<typeof authAction>;
 export type AuthStateType = {
   token: string | null;
   user: any;
+  isAuth: boolean;
 };
 
 const initialState = {
   token: null,
   user: null,
+  isAuth: false,
 } as AuthStateType;
 
 export const authReducer = createReducer(initialState)
@@ -19,6 +21,15 @@ export const authReducer = createReducer(initialState)
     (state: AuthStateType, action: any) => ({
       ...state,
       token: action.payload,
+      isAuth: true,
+    }),
+  )
+  .handleAction(
+    [authAction.loginFailed],
+    (state: AuthStateType, action: any) => ({
+      ...state,
+      token: '',
+      isAuth: false,
     }),
   )
   .handleAction(
@@ -26,6 +37,7 @@ export const authReducer = createReducer(initialState)
     (state: AuthStateType, action: any) => ({
       ...state,
       token: action.payload,
+      isAuth: true,
     }),
   )
   .handleAction(
@@ -33,5 +45,6 @@ export const authReducer = createReducer(initialState)
     (state: AuthStateType, action: any) => ({
       ...state,
       token: null,
+      isAuth: false,
     }),
   );
